@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "PPS_Public_SSocial_CS",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID_1": 1, "NOM_OFFCL": "Centre de services scolaire de la Capitale", "ADRS_GEO_1": "1900, rue Côté", "NOM_MUNCP": "Québec", "CD_POSTL": "G1N3Y5", "TYPE_ORGNS": "Centre de services scolaire", "RESEAU": "Public", "SITE_WEB": "cssc.gouv.qc.ca", "TYPE_CS": "Franco" }, "geometry": { "type": "Point", "coordinates": [ -7935775.919700000435114, 5910688.926299996674061 ] } },
+{ "type": "Feature", "properties": { "OBJECTID_1": 2, "NOM_OFFCL": "Centre de services scolaire des Découvreurs", "ADRS_GEO_1": "100-945, avenue Wolfe", "NOM_MUNCP": "Québec", "CD_POSTL": "G1V4E2", "TYPE_ORGNS": "Centre de services scolaire", "RESEAU": "Public", "SITE_WEB": "www.cssdd.gouv.qc.ca", "TYPE_CS": "Franco" }, "geometry": { "type": "Point", "coordinates": [ -7936452.9649, 5905657.478000000119209 ] } },
+{ "type": "Feature", "properties": { "OBJECTID_1": 3, "NOM_OFFCL": "Centre de services scolaire des Premières-Seigneuries", "ADRS_GEO_1": "643, avenue du Cénacle", "NOM_MUNCP": "Québec", "CD_POSTL": "G1E1B3", "TYPE_ORGNS": "Centre de services scolaire", "RESEAU": "Public", "SITE_WEB": "www.csdps.qc.ca", "TYPE_CS": "Franco" }, "geometry": { "type": "Point", "coordinates": [ -7925035.9265, 5921441.484700001776218 ] } },
+{ "type": "Feature", "properties": { "OBJECTID_1": 4, "NOM_OFFCL": "Commission scolaire Central Québec", "ADRS_GEO_1": "2046, chemin Saint-Louis", "NOM_MUNCP": "Québec", "CD_POSTL": "G1T1P4", "TYPE_ORGNS": "Commission scolaire", "RESEAU": "Public", "SITE_WEB": "www.cqsb.qc.ca", "TYPE_CS": "Anglo" }, "geometry": { "type": "Point", "coordinates": [ -7931722.777100000530481, 5905977.538000002503395 ] } }
+]
+}

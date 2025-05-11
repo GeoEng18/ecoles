@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Établissement d'enseignement - Québec</title>
+    <link rel="icon" href="img/logo-vdq.png">
+    <link rel="stylesheet" href="css/1.css">
+
+    <!-- OpenLayers 9.0.0 imports -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v9.0.0/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v9.0.0/dist/ol.js"></script>
+
+    <!-- jQuery 3.5.1 import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- jQueryUI 1.13.2 import -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <!-- Bootstrap 5.0.2 imports -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- OpenLayers CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/101507ea8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <style>
+
+        #map{
+                position:relative;
+            }
+        </style>
+
+    <script>
+        // Activation de la fonctionnalité draggable avec contrainte parent
+        $(function() {
+            $(".draggable").draggable({ containment: "parent" });
+        });
+    </script>
+</head>
+
+<body id="main-page">
+    <!-- En-tête -->
+    <header id="page-header">
+        <!-- Contenu de l'en-tête -->
+        <div class="col-2 custom-logo-container">
+            <img src="https://images.529garage.com/logos/attachments/001/197/532/original/UdeS_logo_h_blanc_etiquette_verte_rgbHR.png?1649707359" class="custom-logo">
+        </div>
+        
+        <div class="col-8 text-center">
+            <div class="tool-title">Localisation des établissements d’enseignement du réseau scolaire à Québec</div>
+        </div>
+        
+        <div class="col-2"></div>
+        
+    </header>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Bienvenue sur notre site !</h2>
+            <p>Merci de visiter notre site. Découvrez tout ce que nous avons à offrir.</p>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+
+    <div id="real-map">
+        <!-- Panneau d'information -->
+        <div id="info-panel" class="panel draggable">
+            <!-- Contenu du panneau d'information -->
+            <h3>Information</h3>
+            <div class="info-panel-mainarea">
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Nom:</div>
+                    <div id="court-nom-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Adresse:</div>
+                    <div id="court-adresse-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Région:</div>
+                    <div id="court-muni-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Type d'organisme:</div>
+                    <div id="court-org-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Réseau:</div>
+                    <div id="court-reseau-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Ordre d'enseignement:</div>
+                    <div id="court-ordre-val" class="popup-info-val"></div>
+                </div>
+
+                <div class="popup-info-row">
+                    <div class="popup-info-name">Site internet:</div>
+                    <div id="court-web-val" class="popup-info-val"></div>
+                </div>
+                
+
+            </div>
+
+        </div>
+
+        <!-- Panneau de légende -->
+        <div id="legend-panel" class="panel draggable">
+            <!-- Contenu de la légende -->
+            <h3>Légende</h3>
+
+                <div class="legend">
+                    <i class="fa-solid fa-circle "style = "color: red;"></i>Établissements collégiaux
+                </div>
+                <div class="legend">
+                    <i class="fa-solid fa-circle "style = "color: orange;"></i>Établissements universitaires
+                </div>
+                <div class="legend">
+                    <i class="fa-solid fa-circle "style = "color: blue;"></i>Établissements privés
+                </div>
+                <div class="legend">
+                    <i class="fa-solid fa-circle "style = "color: purple;"></i>Écoles gouvernementales
+                </div>
+                <div class="legend">
+                    <i class="fa-solid fa-circle "style = "color: green;"></i>Écoles publiques
+                </div>
+                <div class="legend">
+                    <i class="fa-regular fa-square" style="color:red;"></i>Ville de Québec
+                </div>
+        </div>
+
+            <!-- Contenu des couches vectorielles -->
+            <div id="layers-panel" class="panel draggable">
+                <h3>Couches vectorielles</h3>
+                <div id="container_layers">
+                    <div id="basemap-ctn_layers">
+
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="ESC">
+                            <div class="layer-name">Établissements collégiaux</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('ESC')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="ESU">
+                            <div class="layer-name">Établissements universitaires</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('ESU')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="PPS_Priv">
+                            <div class="layer-name">Établissements privés</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('PPS_Priv')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="PPSG">
+                            <div class="layer-name">Écoles gouvernementales</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('PPSG')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="PPS_Pub">
+                            <div class="layer-name">Écoles publiques</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('PPS_Pub')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="vectorlayer-ctn">
+                            <input id="Canada" type="checkbox" name="vectorLayerCheckboxButton" value="QC">
+                            <div class="layer-name">Ville de Québec</div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les métadonnées">
+                                <button class="metadata-button" onclick="showMetadataModal('QC')" style="background-color: transparent;">
+                                    <i class="fa-solid fa-circle-info fa" style="color: rgb(34, 110, 223); background-color: transparent;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Panneau des fonds de cartes -->
+        <div id="basemap-panel" class="panel draggable">
+            <!-- Contenu des fonds de cartes -->
+            <h3>Fonds de cartes</h3>
+                <div id="container">
+                    <div id="basemap-ctn">
+                        <span>
+                            <div class="layer-ctn">
+                                <input id="GS" type="radio" name="baseLayerRadioButton" value="GoogleStreets" checked>
+                                <div class="layer-name">Google Streets</div>
+                            </div>
+                            
+                        </span>
+                            <div class="layer-ctn">
+                                <input id="sat" type="radio" name="baseLayerRadioButton" value="SatLayer">
+                                <div class="layer-name">Google Satellite</div>
+                            </div>
+                        </span>
+                        <span>
+                            <div class="layer-ctn">
+                                <input id="dark" type="radio" name="baseLayerRadioButton" value="TerrLayer">
+                                <div class="layer-name">Google terrain</div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Panneau À propos -->
+        <div id="about-panel" class="panel draggable">
+            <!-- Contenu À propos -->
+            <div>
+                <h3>À propos</h3>
+                <p>Ce projet s'inscrit dans le cadre du cours GMQ 717. Ce cours est offert à l'hiver 2024 au département de géomatique appliquée de l'université de Sherbrooke.
+                    Les éléments qui figurent sur ce site sont fournis à titre d'information au lecteur. Ils ne constituent en aucun cas un document légal. Pour obtenir des renseignements
+                    ou nous faire part de vos commentaires, écrivez-nous!</p>
+                <h4>Responsables du site</h4>
+                <div>
+                    <h5>Habib Mortada</h5>
+                    <p>Matricule : 22 153 330<br>
+                    Couriel : morh1803@usherbrooke.ca</p>
+                </div>
+                <div>
+                    <h5>Asma Boumezaar</h5>
+                    <p>Matricule : 22 229 474<br>
+                    Couriel : boua1757@usherbrooke.ca</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Carte -->
+        <div id="map">
+            <div id="map-btn-row">
+                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Information">
+                    <div id="info" class="map-btn-box shadowy">
+                        <i class="fa-solid fa-circle-info fa fa-2x"></i>
+                    </div>
+                </div>
+
+
+                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Légende">
+                    <div id="legend" class="map-btn-box shadowy">
+                        <i class="fa-solid fa-list fa-2x"></i>
+                    </div>
+                </div>
+
+                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Couches vectorielles">
+                    <div id="layers" class="map-btn-box shadowy">
+                        <i class="fa-solid fa-layer-group fa-2x"></i>
+                    </div>
+                </div>
+
+                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Fonds de cartes">
+                    <div id="basemap" class="map-btn-box shadowy">
+                        <i class="fa-solid fa-globe fa-2x"></i>
+                    </div>
+                </div>
+
+                <div data-bs-toggle="tooltip" data-bs-placement="top" title="À propos">
+                    <div id="about" class="map-btn-box shadowy">
+                        <i class="fa-solid fa-question fa-2x"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Script personnalisé -->
+    <script src="script/1.js"></script>
+</body>
+</html>

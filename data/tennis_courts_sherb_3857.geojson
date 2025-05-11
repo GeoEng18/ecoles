@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "tennis_courts_sherb_3857",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "nom": "Parc de Saint-Alphonse-de-Liguori", "surface": "Synthétique", "nb_terrain": "3", "eclairage": "Oui" }, "geometry": { "type": "Point", "coordinates": [ -8005402.143880112096667, 5687191.812697716988623 ] } },
+{ "type": "Feature", "properties": { "id": 2, "nom": "Parc Alfred-Élie-Dufresne", "surface": "Criblure de pierre", "nb_terrain": "2", "eclairage": "Oui" }, "geometry": { "type": "Point", "coordinates": [ -8003158.415952472016215, 5684015.988643934950233 ] } },
+{ "type": "Feature", "properties": { "id": 3, "nom": "Parc Andrew-Sangster", "surface": "Criblure de pierre", "nb_terrain": "2", "eclairage": "Oui" }, "geometry": { "type": "Point", "coordinates": [ -8004442.707318154163659, 5682729.018388285301626 ] } },
+{ "type": "Feature", "properties": { "id": 4, "nom": "Parc du Mont-Bellevue", "surface": "Criblure de pierre", "nb_terrain": "3", "eclairage": "Oui" }, "geometry": { "type": "Point", "coordinates": [ -8004738.882241073995829, 5682242.16953254584223 ] } }
+]
+}

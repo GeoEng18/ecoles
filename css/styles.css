@@ -1,0 +1,482 @@
+#page-header{
+    height:60px;
+    background:#092540;
+    padding:10px;
+    display:flex;
+    justify-content: center;
+}
+
+.tool-title{
+    color:white;
+    font-size:26px;
+    font-weight: 600;
+}
+
+.custom-logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.custom-logo {
+    width: 200px;
+    height: auto;
+}
+
+
+#real-map{
+    height:auto;
+    display:flex;
+}
+
+#map{
+    height:calc(100vh - 60px);
+    width:100%;
+    padding:0px;
+    margin:0px;
+}
+
+
+
+
+.shadowy{
+    box-shadow:
+      0 1px 1px hsl(0deg 0% 0% / 0.0175),
+      0 2px 2px hsl(0deg 0% 0% / 0.0175),
+      0 4px 4px hsl(0deg 0% 0% / 0.0175),
+      0 8px 8px hsl(0deg 0% 0% / 0.0175),
+      0 16px 16px hsl(0deg 0% 0% / 0.0175)
+    ;
+}
+
+.sp-info-row{
+    display:flex;
+    padding:8px 20px;
+}
+
+.sp-att-name{
+    font-size:20px;
+    font-weight: 700;
+    margin-right:15px;
+}
+
+.sp-att-value{
+    font-size:20px;
+}
+
+/* OVERLAY */
+
+.popover {
+    border-radius:10px!important;
+    max-width:300px!important;
+}
+
+.bs-popover-top>.popover-arrow::after {
+    border-top-color:rgba(241, 249, 251, 1)!important;
+}
+
+#popup-close-box{
+    position:absolute;
+    right:5px;
+    top:5px;
+    color:white;
+    font-size:25px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#popup-close-box i{
+    text-shadow:0px 0px 10px rgba(0,0,0,.5)
+}
+
+.popover-body {
+    padding:0!important;
+    border-radius:10px!important;
+    overflow:hidden!important;
+    width:300px;
+}
+
+.popup-content-ctn{
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    background:rgba(241, 249, 251, 1);
+}
+
+.popup-info-row{
+    display:flex;
+    gap:10px;
+}
+
+.popup-info-name{
+    font-size:20px;
+    font-weight: 600;
+}
+
+.popup-info-val{
+    font-size:20px;
+}
+
+
+/* INFO PANEL */
+
+.info-panel{
+    display:none;
+    position:absolute;
+    left:40px;
+    top:69px;
+    width:500px;
+    height:500px;
+    background:rgba(241, 249, 251, 1);
+    z-index:9999;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.info-panel.visible{
+    display:block;
+}
+
+
+
+
+
+#info-panel-close-box{
+    position:absolute;
+    right:5px;
+    top:5px;
+    color:white;
+    font-size:25px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: white;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#info-panel-close-box i{
+    text-shadow:0px 0px 10px rgba(0,0,0,.5)
+}
+
+.info-panel-mainarea{
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    background:rgba(241, 249, 251, 1);
+}
+
+
+/* Style Ville Sherbrooke */
+
+#map-btn-row{
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    height:auto;
+    z-index:9999;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+
+.map-btn-box{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#343232;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size:18px;
+    padding:4px;
+    cursor:pointer;
+}
+
+.map-btn-box.active{
+    position:relative;
+    bottom:4px;
+}
+
+.map-btn-box.active::after{
+    content:'.';
+    position:absolute;
+    bottom:-22px;
+    font-size:40px;
+    color:#343232;
+}
+
+#basemap-preview{
+    width:100%;
+    height:100%;
+    background-size:cover;
+    border-radius:50%;
+}
+
+.panel {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed; /* Changer en position fixe pour que le panneau reste à droite */
+    right: 40px; /* Décalage depuis le côté droit de la page */
+    top: 100px;
+    width: 500px;
+    height: auto;
+    background: rgb(255, 255, 255);
+    z-index: 9999;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    transition: opacity 1s;
+}
+
+.panel.visible{
+    visibility: visible;
+    opacity:1;
+}
+
+.layer-ctn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.layer-ctn input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(2);
+}
+
+.layer-ctn:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.layer-name {
+    font-size: 20px; /* Taille de la police agrandie */
+    color: #333; /* Couleur du texte */
+    margin-right: 15x; /* Espacement entre la case à cocher et le texte */
+}
+
+.vectorlayer-ctn {
+    display: flex; /* Utilisation de flexbox */
+    align-items: center; /* Alignement vertical au centre */
+    margin-bottom: 15px; /* Espacement entre les conteneurs */
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.vectorlayer-ctn input[type="checkbox"] {
+    margin-right: 15px; /* Espacement entre la case à cocher et le texte */
+    transform: scale(2);
+}
+
+/* Style du panneau de légende */
+
+.legend {
+    font-size: 20px; /* Taille de la police */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px;
+}
+
+/* Style des icônes */
+.legend i {
+    margin-right: 15px; /* Marge à droite pour espacer les icônes du texte */
+}
+
+/* Style spécifique pour chaque icône */
+.fa-university {
+    font-size: 25px; /* Taille de l'icône */
+}
+
+.fa-map-marker-alt {
+    font-size: 25px; /* Taille de l'icône */
+}
+
+
+/* Style pour le panneau des couches */
+#layers-panel {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Style pour le conteneur des couches */
+#container_layers {
+    margin-top: 5px;
+}
+
+
+
+
+/* Style pour les boutons de métadonnées */
+.metadata-button {
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Style pour les icônes de métadonnées */
+.metadata-button img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Style pour le modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* Style pour le contenu du modal */
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Style pour le bouton de fermeture du modal */
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Style pour le titre du modal */
+#metadataTitle {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Style pour le contenu du modal */
+#metadataContent {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+.fa-info {
+    color: blue; /* Couleur bleue */
+    background-color: transparent; /* Retire tout arrière-plan */
+}
+
+
+
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 90%; /* Augmenter la largeur du modal */
+  max-width: 1000px; /* Augmenter la largeur maximale */
+  position: fixed; /* Modifier la position */
+  top: 50%; /* Positionner au milieu de la page */
+  left: 50%; /* Positionner au milieu de la page */
+  transform: translate(-50%, -50%); /* Centrer exactement au milieu */
+  padding: 40px; /* Augmenter le padding */
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px; /* Ajuster la position verticale si nécessaire */
+    right: 10px; /* Ajuster la position horizontale si nécessaire */
+    font-size: 80px; /* Taille de la police */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 20px; /* Augmente la zone de clic */
+    border-radius: 50%; /* Rend le bouton de fermeture rond */
+    background-color: rgba(255, 255, 255, 0.7); /* Ajoute un arrière-plan pour améliorer la visibilité */
+}
+  
+  
+.close:hover {
+    color: #000;
+}
+
+h2 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #666;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.btn-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 15px 30px; /* Augmenter la taille du bouton */
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* Augmenter le rayon de la bordure */
+  font-size: 20px; /* Augmenter la taille du texte */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+
+.hovered {
+    color: red; /* Changer la couleur du texte au survol */
+}

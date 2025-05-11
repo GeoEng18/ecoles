@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "PPS_Gouvernemental",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID_1": 1, "NOM_OFFCL": "École Wahta'", "ADRS_GEO_1": "20, rue de l'Ours", "NOM_MUNCP": "Wendake", "CD_POSTL": "G0A4V0", "TYPE_ORGNS": "École gouvernementale", "RESEAU": "Gouvernemental", "SITE_WEB": "www.cnhw.qc.ca", "ORDRE_ENS": "Préscolaire - Primaire" }, "geometry": { "type": "Point", "coordinates": [ -7943599.342199999839067, 5919997.049199998378754 ] } },
+{ "type": "Feature", "properties": { "OBJECTID_1": 2, "NOM_OFFCL": "Centre de développement de la formation et de la main-d'oeuvre Huron-Wendat", "ADRS_GEO_1": "100, rue de l'Ours", "NOM_MUNCP": "Wendake", "CD_POSTL": "G0A4V0", "TYPE_ORGNS": "École gouvernementale", "RESEAU": "Gouvernemental", "SITE_WEB": " ", "ORDRE_ENS": "Éducation aux adultes" }, "geometry": { "type": "Point", "coordinates": [ -7943116.549499999731779, 5920229.549500003457069 ] } }
+]
+}
